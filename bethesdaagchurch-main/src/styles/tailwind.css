@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================================
+   BETHESDA AG CHURCH — LIGHT, PEACEFUL DESIGN SYSTEM
+   "God is Light" Philosophy: 70–85% Light Experience
+   ================================================================ */
+
+:root {
+  --background: #FCFAF5; /* Warm Ivory */
+  --foreground: #263238; /* Deep Charcoal */
+  --primary: #C6A15B;    /* Bethesda Gold */
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F1E8;  /* Soft Cream */
+  --secondary-foreground: #263238;
+  --accent: #EEF5F7;     /* Very Light Blue */
+  --accent-foreground: #263238;
+  --muted: #F5F1E8;
+  --muted-foreground: #667085;
+  --card: #FFFFFF;
+  --card-foreground: #263238;
+  --border: #E9DFC9;     /* Warm Sand border */
+  --input: #F5F1E8;
+  --ring: #C6A15B;
+  --radius: 0.75rem;
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
+}
+
+.dark {
+  --background: #1C252B;
+  --foreground: #FCFAF5;
+  --primary: #C6A15B;
+  --primary-foreground: #1C252B;
+  --secondary: #263238;
+  --secondary-foreground: #FCFAF5;
+  --accent: #263238;
+  --accent-foreground: #FCFAF5;
+  --muted: #263238;
+  --muted-foreground: #9CA3AF;
+  --card: #263238;
+  --card-foreground: #FCFAF5;
+  --border: #37474F;
+  --input: #263238;
+  --ring: #C6A15B;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: var(--font-display);
+    color: inherit;
+  }
+
+  p { margin: 0; }
+
+  ::selection {
+    background: rgba(198, 161, 91, 0.25);
+    color: #263238;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Section background rhythms */
+  .bg-warm-ivory { background-color: #FCFAF5; }
+  .bg-soft-cream { background-color: #F5F1E8; }
+  .bg-soft-blue  { background-color: #EEF5F7; }
+  .bg-soft-sage  { background-color: #EEF3EC; }
+  .bg-charcoal   { background-color: #263238; color: #FCFAF5; }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C6A15B 0%, #A38141 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-overlay-light {
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 250, 245, 0.5) 0%,
+      rgba(245, 241, 232, 0.3) 50%,
+      rgba(252, 250, 245, 0.85) 100%
+    );
+  }
+}
+
+/* ================================================================
+   MISSING UTILITY & COMPONENT CLASSES
+   ================================================================ */
+
+/* Glass card styles */
+.glass-card-ivory {
+  background: rgba(252, 250, 245, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Wave texture overlay */
+.wave-texture {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C6A15B' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Section gold divider */
+.section-divider-gold {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C6A15B, transparent);
+}
+
+/* Primary church button */
+.btn-primary-church {
+  background-color: #2D5016;
+  color: #FCFAF5;
+  transition: background-color 0.2s, transform 0.15s;
+}
+.btn-primary-church:hover {
+  background-color: #1f3a0f;
+  transform: translateY(-1px);
+}
+
+/* Card hover lift effect */
+.card-hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(38, 50, 56, 0.12);
+}
+
+/* Scroll-triggered animation */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shimmer animation */
+@keyframes shimmerAnimation {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(198, 161, 91, 0.06) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerAnimation 3s infinite linear;
+}
+
+/* Gold button (used in NewsletterSection) */
+.btn-gold {
+  background-color: #C6A15B;
+  color: #1C252B;
+  font-weight: 700;
+  transition: background-color 0.2s, transform 0.15s;
+}
+.btn-gold:hover {
+  background-color: #A38141;
+  transform: translateY(-1px);
+}
+
+/* Navy deep utility */
+.bg-navy-deep { background-color: #1C252B; }
+.text-navy-deep { color: #1C252B; }
+
+/* Ensure italic quotes always have visible color */
+p.italic, blockquote {
+  color: inherit;
+}
+
+/* Section padding utility */
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}

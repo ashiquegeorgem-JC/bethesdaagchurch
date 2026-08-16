@@ -1,0 +1,32 @@
+import React from 'react';
+import AppImage from '@/components/ui/AppImage';
+
+export default function ContactHero() {
+  return (
+    <section className="relative min-h-[50vh] flex items-end overflow-hidden" aria-label="Contact page hero">
+      <div className="absolute inset-0 z-0">
+        <AppImage
+          src="https://img.rocket.new/generatedImages/rocket_gen_img_17f655466-1772342548752.png"
+          alt="Welcoming church entrance with warm golden light streaming through doors, congregation gathering outside in bright natural light"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw" />
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-church-green/95 via-church-green/55 to-transparent" />
+        <div className="absolute inset-0 opacity-5 section-grain pointer-events-none" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-32 w-full">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-church-gold/30 mb-6">
+          <span className="text-church-gold text-xs font-semibold tracking-widest uppercase">We'd Love to Hear From You</span>
+        </div>
+        <h1 className="font-display text-5xl sm:text-6xl font-bold text-white leading-tight mb-4 max-w-2xl">
+          Get in <span className="text-gradient-gold">Touch</span>
+        </h1>
+        <p className="text-white/80 text-base sm:text-lg max-w-lg leading-relaxed">
+          Whether you're planning your first visit, have a question, or need prayer — we're here for you.
+        </p>
+      </div>
+    </section>);
+
+}
