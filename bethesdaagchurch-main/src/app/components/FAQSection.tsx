@@ -19,7 +19,7 @@ const faqs = [
     a: 'Our services are conducted in Kannada, Tamil, Malayalam, English, Telugu, and Hindi — ensuring everyone can worship in their heart language.',
   },
   {
-    q: "Is there a children\'s church or nursery available?",
+    q: "Is there a children's church or nursery available?",
     a: "Yes! We have Children's School during Sunday services with engaging, age-appropriate lessons for kids to learn about God's love in a safe and fun setting.",
   },
   {
@@ -57,7 +57,9 @@ export default function FAQSection() {
       },
       { threshold: 0.1 }
     );
-    sectionRef?.current?.querySelectorAll('.animate-on-scroll')?.forEach((el) => observer?.observe(el));
+    sectionRef?.current
+      ?.querySelectorAll('.animate-on-scroll')
+      ?.forEach((el) => observer?.observe(el));
     return () => observer?.disconnect();
   }, []);
 
@@ -70,9 +72,14 @@ export default function FAQSection() {
       <div className="absolute inset-0 wave-texture opacity-40 pointer-events-none" />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-14 animate-on-scroll">
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-church-bronze mb-3">Got Questions?</span>
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-church-bronze mb-3">
+            Got Questions?
+          </span>
           <div className="section-divider-gold w-16 mx-auto mb-4" />
-          <h2 id="faq-heading" className="font-display text-4xl sm:text-5xl font-bold text-church-green">
+          <h2
+            id="faq-heading"
+            className="font-display text-4xl sm:text-5xl font-bold text-church-green"
+          >
             Frequently Asked <span className="text-gradient-gold">Questions</span>
           </h2>
         </div>
@@ -88,9 +95,20 @@ export default function FAQSection() {
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-church-green/5 transition-colors duration-200"
                 aria-expanded={openIndex === i}
               >
-                <span className="font-display text-base font-semibold text-church-green pr-4">{faq?.q}</span>
-                <div className={`w-6 h-6 rounded-full bg-church-green/10 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}>
-                  <svg className="w-3.5 h-3.5 text-church-green" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <span className="font-display text-base font-semibold text-church-green pr-4">
+                  {faq?.q}
+                </span>
+                <div
+                  className={`w-6 h-6 rounded-full bg-church-green/10 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
+                >
+                  <svg
+                    className="w-3.5 h-3.5 text-church-green"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>

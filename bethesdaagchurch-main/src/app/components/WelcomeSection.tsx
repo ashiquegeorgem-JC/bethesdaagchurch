@@ -37,21 +37,28 @@ export default function WelcomeSection() {
           >
             <div className="inline-flex items-center gap-2">
               <span className="w-8 h-px bg-gold" />
-              <span className="text-overline font-semibold uppercase tracking-[0.2em] text-gold">WELCOME HOME</span>
+              <span className="text-overline font-semibold uppercase tracking-[0.2em] text-gold">
+                WELCOME HOME
+              </span>
             </div>
 
             <h2 className="font-display font-bold text-display-sm sm:text-display-md text-charcoal dark:text-ivory leading-tight">
-              Come as you are.<br />
-              Find your people.<br />
+              Come as you are.
+              <br />
+              Find your people.
+              <br />
               Grow in faith.
             </h2>
 
             <p className="text-body text-muted-text dark:text-ivory/80 leading-relaxed">
-              Bethesda AG Church is a Spirit-filled community located in Rajajinagar, Bengaluru. For over four decades, our vision has been simple: to love God with all our heart, love people genuinely, and see lives transformed by the Gospel of Jesus Christ.
+              Bethesda AG Church is a Spirit-filled community located in Rajajinagar, Bengaluru. For
+              over four decades, our vision has been simple: to love God with all our heart, love
+              people genuinely, and see lives transformed by the Gospel of Jesus Christ.
             </p>
 
             <p className="text-body text-muted-text dark:text-ivory/80 leading-relaxed">
-              Whether you are searching for answers, looking for a church family, or seeking to grow deeper in your relationship with God — you belong here.
+              Whether you are searching for answers, looking for a church family, or seeking to grow
+              deeper in your relationship with God — you belong here.
             </p>
 
             <div className="pt-4 flex flex-wrap gap-4">

@@ -28,8 +28,12 @@ export default function MemberDashboardPage() {
                 <AppImage src={member.image} alt={member.name} fill className="object-cover" />
               </div>
               <div>
-                <span className="text-xs text-gold font-bold uppercase tracking-widest">MEMBER DASHBOARD</span>
-                <h1 className="font-display font-bold text-display-sm text-ivory">Welcome Back, {member.name}!</h1>
+                <span className="text-xs text-gold font-bold uppercase tracking-widest">
+                  MEMBER DASHBOARD
+                </span>
+                <h1 className="font-display font-bold text-display-sm text-ivory">
+                  Welcome Back, {member.name}!
+                </h1>
                 <p className="text-xs text-ivory/70">Member since {member.memberSince}</p>
               </div>
             </div>
@@ -46,10 +50,15 @@ export default function MemberDashboardPage() {
             <div className="lg:col-span-8 space-y-8">
               {/* My Groups */}
               <div className="bg-card border border-border p-6 rounded-3xl shadow-sm space-y-4">
-                <h3 className="font-display font-bold text-heading-md text-foreground">My Small Groups</h3>
+                <h3 className="font-display font-bold text-heading-md text-foreground">
+                  My Small Groups
+                </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {member.groups.map((grp) => (
-                    <div key={grp} className="p-4 border border-border bg-input rounded-2xl flex items-center justify-between">
+                    <div
+                      key={grp}
+                      className="p-4 border border-border bg-input rounded-2xl flex items-center justify-between"
+                    >
                       <div>
                         <h4 className="font-display font-bold text-foreground">{grp}</h4>
                         <span className="text-xs text-gold font-semibold">Active Member</span>
@@ -66,13 +75,22 @@ export default function MemberDashboardPage() {
 
               {/* Saved Messages */}
               <div className="bg-card border border-border p-6 rounded-3xl shadow-sm space-y-4">
-                <h3 className="font-display font-bold text-heading-md text-foreground">Saved Messages</h3>
+                <h3 className="font-display font-bold text-heading-md text-foreground">
+                  Saved Messages
+                </h3>
                 <div className="space-y-3">
                   {savedSermonObjects.map((sermon) => (
-                    <div key={sermon.id} className="p-4 border border-border rounded-2xl flex items-center justify-between gap-4">
+                    <div
+                      key={sermon.id}
+                      className="p-4 border border-border rounded-2xl flex items-center justify-between gap-4"
+                    >
                       <div>
-                        <Badge variant="gold" size="sm">{sermon.series}</Badge>
-                        <h4 className="font-display font-bold text-foreground text-base mt-1">{sermon.title}</h4>
+                        <Badge variant="gold" size="sm">
+                          {sermon.series}
+                        </Badge>
+                        <h4 className="font-display font-bold text-foreground text-base mt-1">
+                          {sermon.title}
+                        </h4>
                         <p className="text-xs text-muted-foreground">{sermon.speaker}</p>
                       </div>
                       <Link href={`/messages/${sermon.slug}`}>
@@ -90,22 +108,35 @@ export default function MemberDashboardPage() {
             <div className="lg:col-span-4 space-y-8">
               {/* Upcoming Registered Events */}
               <div className="bg-card border border-border p-6 rounded-3xl shadow-sm space-y-4">
-                <h3 className="font-display font-bold text-heading-md text-foreground">Registered Events</h3>
+                <h3 className="font-display font-bold text-heading-md text-foreground">
+                  Registered Events
+                </h3>
                 <div className="p-4 border border-border rounded-2xl bg-gold/10 space-y-1">
-                  <span className="text-xs font-bold text-gold uppercase">FEATURED REGISTRATION</span>
+                  <span className="text-xs font-bold text-gold uppercase">
+                    FEATURED REGISTRATION
+                  </span>
                   <h4 className="font-display font-bold text-foreground">{EVENTS[0].title}</h4>
-                  <p className="text-xs text-muted-foreground">{EVENTS[0].date} • {EVENTS[0].time}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {EVENTS[0].date} • {EVENTS[0].time}
+                  </p>
                 </div>
               </div>
 
               {/* Giving History */}
               <div className="bg-card border border-border p-6 rounded-3xl shadow-sm space-y-4">
-                <h3 className="font-display font-bold text-heading-md text-foreground">Giving History</h3>
+                <h3 className="font-display font-bold text-heading-md text-foreground">
+                  Giving History
+                </h3>
                 <div className="space-y-2">
                   {member.givingHistory.map((g, i) => (
-                    <div key={i} className="flex items-center justify-between text-xs py-2 border-b border-border last:border-0">
+                    <div
+                      key={i}
+                      className="flex items-center justify-between text-xs py-2 border-b border-border last:border-0"
+                    >
                       <div>
-                        <span className="font-semibold block text-foreground">₹{g.amount.toLocaleString()}</span>
+                        <span className="font-semibold block text-foreground">
+                          ₹{g.amount.toLocaleString()}
+                        </span>
                         <span className="text-muted-foreground">{g.type}</span>
                       </div>
                       <span className="text-muted-foreground">{g.date}</span>

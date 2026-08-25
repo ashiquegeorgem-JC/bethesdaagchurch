@@ -10,7 +10,7 @@ const weeklyEvents = [
   { day: 'Daily', time: '11:30 AM', label: 'Intercessory Prayer (Zoom)' },
   { day: 'Tue–Thu', time: '7:30 PM', label: 'Bible Study (Zoom)' },
   { day: 'Monday', time: '7:30 PM', label: 'Life Group' },
-  { day: 'Wednesday', time: '10:30 AM', label: "Women\'s Fellowship" },
+  { day: 'Wednesday', time: '10:30 AM', label: "Women's Fellowship" },
   { day: 'Friday', time: '7:30 PM', label: 'Cottage Prayer' },
   { day: 'Saturday', time: '6:00 PM', label: 'Youth Meeting' },
   { day: 'Saturday', time: '7:30 PM', label: 'Workers Meeting' },
@@ -32,13 +32,18 @@ export default function EventTicker() {
   return (
     <div
       className="relative w-full overflow-hidden bg-church-green border-y border-church-gold/30 py-3"
-      aria-label="Weekly events ticker">
+      aria-label="Weekly events ticker"
+    >
       {/* Left fade */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, #2E7D4D, transparent)' }} />
+      <div
+        className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to right, #2E7D4D, transparent)' }}
+      />
       {/* Right fade */}
-      <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to left, #2E7D4D, transparent)' }} />
+      <div
+        className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to left, #2E7D4D, transparent)' }}
+      />
       {/* Scrolling track */}
       <div className="flex whitespace-nowrap animate-ticker">
         {items?.map((event, idx) => (

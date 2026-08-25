@@ -18,7 +18,12 @@ export interface TabsProps {
 
 export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
   return (
-    <div className={cn('flex items-center gap-1 p-1.5 bg-muted rounded-xl border border-border overflow-x-auto no-scrollbar', className)}>
+    <div
+      className={cn(
+        'flex items-center gap-1 p-1.5 bg-muted rounded-xl border border-border overflow-x-auto no-scrollbar',
+        className
+      )}
+    >
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;
         return (
@@ -27,7 +32,9 @@ export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
             onClick={() => onChange(tab.id)}
             className={cn(
               'relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap shrink-0',
-              isActive ? 'text-navy-deep dark:text-ivory font-semibold' : 'text-muted-foreground hover:text-foreground'
+              isActive
+                ? 'text-navy-deep dark:text-ivory font-semibold'
+                : 'text-muted-foreground hover:text-foreground'
             )}
           >
             {isActive && (
@@ -42,7 +49,9 @@ export function Tabs({ tabs, activeTab, onChange, className }: TabsProps) {
               <span
                 className={cn(
                   'relative z-10 text-xs px-2 py-0.5 rounded-full font-bold',
-                  isActive ? 'bg-gold text-navy-deep' : 'bg-muted-foreground/20 text-muted-foreground'
+                  isActive
+                    ? 'bg-gold text-navy-deep'
+                    : 'bg-muted-foreground/20 text-muted-foreground'
                 )}
               >
                 {tab.count}

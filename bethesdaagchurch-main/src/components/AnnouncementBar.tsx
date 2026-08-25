@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { useApp } from '@/context/AppContext';
 
 export function AnnouncementBar() {
@@ -13,16 +14,25 @@ export function AnnouncementBar() {
         <div className="flex items-center gap-2 mx-auto sm:mx-0">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
           <span>Youth Conference 2026 — Registration Now Open!</span>
-          <a href="/events/youth-conference-2026" className="text-gold-dark dark:text-gold underline underline-offset-4 hover:text-gold transition-colors font-semibold ml-1">
+          <Link
+            href="/events/youth-conference-2026"
+            className="text-gold-dark dark:text-gold underline underline-offset-4 hover:text-gold transition-colors font-semibold ml-1"
+          >
             Register Today →
-          </a>
+          </Link>
         </div>
         <button
           onClick={dismissAnnouncement}
           className="text-muted-text hover:text-charcoal dark:hover:text-ivory p-1 transition-colors shrink-0 hidden sm:block"
           aria-label="Dismiss announcement"
         >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>

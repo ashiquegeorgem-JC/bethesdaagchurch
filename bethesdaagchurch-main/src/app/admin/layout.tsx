@@ -30,7 +30,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="space-y-6">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 p-2">
-            <AppImage src="/bethesda-logo-transparent.png" alt="Bethesda AG Church" width={36} height={36} className="h-9 w-auto object-contain" />
+            <AppImage
+              src="/bethesda-logo-transparent.png"
+              alt="Bethesda AG Church"
+              width={36}
+              height={36}
+              className="h-9 w-auto object-contain"
+            />
             <div>
               <h2 className="font-display font-bold text-sm text-gold tracking-wider">BETHESDA</h2>
               <p className="text-[10px] text-ivory/60 uppercase">Admin Portal</p>
@@ -46,7 +52,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   key={nav.href}
                   href={nav.href}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-colors ${
-                    active ? 'bg-gold text-navy-deep font-bold shadow-md' : 'text-ivory/80 hover:bg-white/5 hover:text-gold'
+                    active
+                      ? 'bg-gold text-navy-deep font-bold shadow-md'
+                      : 'text-ivory/80 hover:bg-white/5 hover:text-gold'
                   }`}
                 >
                   <span>{nav.icon}</span>
@@ -70,10 +78,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
         {/* Top Header */}
         <header className="h-16 bg-navy/90 border-b border-gold/20 flex items-center justify-between px-6 shrink-0">
-          <h1 className="font-display font-bold text-base text-gold uppercase tracking-wider">Church Management System</h1>
+          <h1 className="font-display font-bold text-base text-gold uppercase tracking-wider">
+            Church Management System
+          </h1>
           <div className="flex items-center gap-4">
-            <span className="text-xs text-ivory/70 hidden sm:inline">Admin User: Pastor Samuel</span>
-            <Link href="/" className="text-xs px-3 py-1.5 bg-gold/15 text-gold border border-gold/30 rounded-lg font-bold">
+            <span className="text-xs text-ivory/70 hidden sm:inline">
+              Admin User: Pastor Samuel
+            </span>
+            <Link
+              href="/"
+              className="text-xs px-3 py-1.5 bg-gold/15 text-gold border border-gold/30 rounded-lg font-bold"
+            >
               View Website ↗
             </Link>
           </div>

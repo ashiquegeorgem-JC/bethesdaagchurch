@@ -28,7 +28,9 @@ export default function TestimoniesPage() {
             </div>
             <div>
               <h4 className="font-display font-bold text-foreground">{test.name}</h4>
-              <Badge variant="gold" size="sm">{test.category}</Badge>
+              <Badge variant="gold" size="sm">
+                {test.category}
+              </Badge>
             </div>
           </div>
           <p className="text-body text-foreground italic leading-relaxed font-display text-lg">
@@ -45,7 +47,9 @@ export default function TestimoniesPage() {
       <Header />
       <main className="min-h-screen bg-background pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <Breadcrumbs items={[{ label: 'Community', href: '/community' }, { label: 'Testimonies' }]} />
+          <Breadcrumbs
+            items={[{ label: 'Community', href: '/community' }, { label: 'Testimonies' }]}
+          />
         </div>
 
         {/* Hero */}
@@ -60,12 +64,15 @@ export default function TestimoniesPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">GOD AT WORK</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              GOD AT WORK
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               Stories of Transformation
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              &ldquo;They overcame him by the blood of the Lamb and by the word of their testimony.&rdquo; — Revelation 12:11
+              &ldquo;They overcame him by the blood of the Lamb and by the word of their
+              testimony.&rdquo; — Revelation 12:11
             </p>
           </div>
         </section>
@@ -74,9 +81,14 @@ export default function TestimoniesPage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {TESTIMONIALS.map((test) => (
-              <div key={test.id} className="bg-card border border-border p-8 rounded-3xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow">
+              <div
+                key={test.id}
+                className="bg-card border border-border p-8 rounded-3xl shadow-sm flex flex-col justify-between hover:shadow-xl transition-shadow"
+              >
                 <div className="space-y-4">
-                  <Badge variant="gold" size="sm">{test.category}</Badge>
+                  <Badge variant="gold" size="sm">
+                    {test.category}
+                  </Badge>
                   <p className="text-body italic text-muted-foreground leading-relaxed line-clamp-4 font-display text-lg">
                     &ldquo;{test.testimony}&rdquo;
                   </p>
@@ -88,12 +100,19 @@ export default function TestimoniesPage() {
                       <AppImage src={test.image} alt={test.name} fill className="object-cover" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-foreground text-sm">{test.name}</h4>
+                      <h4 className="font-display font-bold text-foreground text-sm">
+                        {test.name}
+                      </h4>
                       <span className="text-[10px] text-muted-foreground">{test.date}</span>
                     </div>
                   </div>
 
-                  <Button variant="ghost" size="sm" onClick={() => handleReadMore(test)} className="text-xs font-bold text-gold">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleReadMore(test)}
+                    className="text-xs font-bold text-gold"
+                  >
                     Read More →
                   </Button>
                 </div>

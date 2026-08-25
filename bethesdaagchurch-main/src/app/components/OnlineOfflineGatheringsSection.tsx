@@ -59,9 +59,15 @@ export default function OnlineOfflineGatheringsSection() {
 
               <ul className="space-y-4">
                 {onlineGatherings.map((item) => (
-                  <li key={item.name + item.day} className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-sand/30 gap-1 sm:gap-4">
+                  <li
+                    key={item.name + item.day}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-sand/30 gap-1 sm:gap-4"
+                  >
                     <span className="font-medium text-base text-charcoal dark:text-ivory">
-                      {item.name} <span className="text-xs text-muted-text dark:text-ivory/60 font-normal">({item.day})</span>
+                      {item.name}{' '}
+                      <span className="text-xs text-muted-text dark:text-ivory/60 font-normal">
+                        ({item.day})
+                      </span>
                     </span>
                     <span className="font-semibold text-gold text-sm sm:text-base tracking-wide">
                       {item.time}
@@ -106,9 +112,15 @@ export default function OnlineOfflineGatheringsSection() {
 
               <ul className="space-y-4">
                 {physicalGatherings.map((item) => (
-                  <li key={item.name + item.day} className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-sand/30 gap-1 sm:gap-4">
+                  <li
+                    key={item.name + item.day}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-sand/30 gap-1 sm:gap-4"
+                  >
                     <span className="font-medium text-base text-charcoal dark:text-ivory">
-                      {item.name} <span className="text-xs text-muted-text dark:text-ivory/60 font-normal">({item.day})</span>
+                      {item.name}{' '}
+                      <span className="text-xs text-muted-text dark:text-ivory/60 font-normal">
+                        ({item.day})
+                      </span>
                     </span>
                     <span className="font-semibold text-gold text-sm sm:text-base tracking-wide">
                       {item.time}

@@ -14,7 +14,11 @@ interface YouTubeVideo {
 
 function formatDate(iso: string): string {
   try {
-    return new Date(iso).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+    return new Date(iso).toLocaleDateString('en-IN', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    });
   } catch {
     return iso;
   }
@@ -74,7 +78,8 @@ export default function SermonsSection() {
                     alt={featured.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${featured.id}/mqdefault.jpg`;
+                      (e.target as HTMLImageElement).src =
+                        `https://i.ytimg.com/vi/${featured.id}/mqdefault.jpg`;
                     }}
                   />
                   <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center group-hover:bg-charcoal/10 transition-colors">
@@ -84,14 +89,16 @@ export default function SermonsSection() {
                       </svg>
                     </div>
                   </div>
-                  <Badge variant="gold" className="absolute top-4 left-4 font-bold">LATEST MESSAGE</Badge>
+                  <Badge variant="gold" className="absolute top-4 left-4 font-bold">
+                    LATEST MESSAGE
+                  </Badge>
                 </a>
               </div>
 
               <div className="lg:col-span-5 space-y-4">
                 <span className="text-xs text-muted-text font-semibold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 fill-[#FF0000]" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                   Bethesda AG Church • @Bethesda_AG
                 </span>
@@ -107,10 +114,18 @@ export default function SermonsSection() {
                       WATCH ON YOUTUBE →
                     </Button>
                   </a>
-                  <a href="https://www.youtube.com/@Bethesda_AG" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="sm" className="bg-[#FF0000]/10 border-[#FF0000]/40 text-[#FF0000] hover:bg-[#FF0000] hover:text-white">
+                  <a
+                    href="https://www.youtube.com/@Bethesda_AG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="bg-[#FF0000]/10 border-[#FF0000]/40 text-[#FF0000] hover:bg-[#FF0000] hover:text-white"
+                    >
                       <svg className="w-4 h-4 inline-block mr-1 fill-current" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                       </svg>
                       ALL YOUTUBE SERMONS
                     </Button>
@@ -123,7 +138,10 @@ export default function SermonsSection() {
             {recent.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {recent.map((video) => (
-                  <div key={video.id} className="bg-card border border-sand rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+                  <div
+                    key={video.id}
+                    className="bg-card border border-sand rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
+                  >
                     <a
                       href={video.url}
                       target="_blank"
@@ -135,12 +153,15 @@ export default function SermonsSection() {
                         alt={video.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`;
+                          (e.target as HTMLImageElement).src =
+                            `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`;
                         }}
                       />
                       <div className="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/5 transition-colors flex items-center justify-center">
                         <div className="p-2.5 rounded-full bg-gold/90 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                          <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                          <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
                         </div>
                       </div>
                     </a>
@@ -148,7 +169,9 @@ export default function SermonsSection() {
                       <span className="text-xs text-muted-text font-semibold uppercase">
                         {video.publishedAt ? formatDate(video.publishedAt) : ''}
                       </span>
-                      <h4 className="font-display font-bold text-xl text-charcoal dark:text-ivory line-clamp-2">{video.title}</h4>
+                      <h4 className="font-display font-bold text-xl text-charcoal dark:text-ivory line-clamp-2">
+                        {video.title}
+                      </h4>
                       <p className="text-xs text-gold font-semibold">Bethesda AG Church</p>
                     </div>
                     <div className="p-6 sm:p-8 pt-0">
@@ -166,8 +189,14 @@ export default function SermonsSection() {
         ) : (
           /* No videos fallback */
           <div className="text-center py-16 bg-card border border-sand rounded-3xl">
-            <p className="text-muted-text mb-4">Visit our YouTube channel for all messages and sermons.</p>
-            <a href="https://www.youtube.com/@Bethesda_AG" target="_blank" rel="noopener noreferrer">
+            <p className="text-muted-text mb-4">
+              Visit our YouTube channel for all messages and sermons.
+            </p>
+            <a
+              href="https://www.youtube.com/@Bethesda_AG"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="gold">OPEN YOUTUBE CHANNEL →</Button>
             </a>
           </div>

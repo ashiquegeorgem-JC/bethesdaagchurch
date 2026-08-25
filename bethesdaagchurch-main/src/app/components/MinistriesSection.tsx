@@ -28,11 +28,20 @@ export default function MinistriesSection() {
               className="group bg-card border border-sand rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <AppImage src={ministry.image} alt={ministry.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <AppImage
+                  src={ministry.image}
+                  alt={ministry.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-6 sm:p-8 space-y-3">
-                <h3 className="font-display font-bold text-2xl text-charcoal dark:text-ivory group-hover:text-gold transition-colors">{ministry.name}</h3>
-                <p className="text-sm text-muted-text dark:text-ivory/80 leading-relaxed line-clamp-2">{ministry.shortDesc}</p>
+                <h3 className="font-display font-bold text-2xl text-charcoal dark:text-ivory group-hover:text-gold transition-colors">
+                  {ministry.name}
+                </h3>
+                <p className="text-sm text-muted-text dark:text-ivory/80 leading-relaxed line-clamp-2">
+                  {ministry.shortDesc}
+                </p>
               </div>
               <div className="p-6 sm:p-8 pt-0">
                 <Link href={`/ministries/${ministry.slug}`}>

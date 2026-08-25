@@ -11,7 +11,14 @@ export interface SectionHeaderProps {
   dark?: boolean;
 }
 
-export function SectionHeader({ eyebrow, title, description, align = 'center', className, dark = false }: SectionHeaderProps) {
+export function SectionHeader({
+  eyebrow,
+  title,
+  description,
+  align = 'center',
+  className,
+  dark = false,
+}: SectionHeaderProps) {
   const alignClasses = {
     left: 'text-left items-start',
     center: 'text-center items-center mx-auto',
@@ -23,7 +30,9 @@ export function SectionHeader({ eyebrow, title, description, align = 'center', c
       {eyebrow && (
         <div className="inline-flex items-center gap-3 mb-3">
           <span className="w-8 h-px bg-gold/60" />
-          <span className="text-overline font-semibold tracking-[0.2em] uppercase text-gold">{eyebrow}</span>
+          <span className="text-overline font-semibold tracking-[0.2em] uppercase text-gold">
+            {eyebrow}
+          </span>
           <span className="w-8 h-px bg-gold/60" />
         </div>
       )}

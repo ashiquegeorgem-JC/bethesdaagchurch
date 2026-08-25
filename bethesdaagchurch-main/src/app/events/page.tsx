@@ -48,12 +48,15 @@ export default function EventsPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">WHAT&apos;S HAPPENING</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              WHAT&apos;S HAPPENING
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               Church Events &amp; Gatherings
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              Connect, grow, and serve together. Find upcoming conferences, worship nights, outreach days, and community gatherings.
+              Connect, grow, and serve together. Find upcoming conferences, worship nights, outreach
+              days, and community gatherings.
             </p>
           </div>
         </section>
@@ -63,15 +66,23 @@ export default function EventsPage() {
           <div className="bg-card border border-gold/30 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-8">
             <div className="lg:col-span-7 relative aspect-[16/9] rounded-2xl overflow-hidden">
               <AppImage src={featured.image} alt={featured.title} fill className="object-cover" />
-              <Badge variant="gold" className="absolute top-4 left-4 font-bold">FEATURED EVENT</Badge>
+              <Badge variant="gold" className="absolute top-4 left-4 font-bold">
+                FEATURED EVENT
+              </Badge>
             </div>
 
             <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
               <div className="space-y-2">
-                <span className="text-xs font-bold text-gold uppercase tracking-wider">{featured.date} • {featured.time}</span>
-                <h2 className="font-display font-bold text-display-sm text-foreground">{featured.title}</h2>
+                <span className="text-xs font-bold text-gold uppercase tracking-wider">
+                  {featured.date} • {featured.time}
+                </span>
+                <h2 className="font-display font-bold text-display-sm text-foreground">
+                  {featured.title}
+                </h2>
                 <p className="text-xs text-muted-foreground font-semibold">{featured.subtitle}</p>
-                <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed">{featured.description}</p>
+                <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                  {featured.description}
+                </p>
               </div>
               <div className="pt-2 flex flex-wrap gap-3">
                 <Link href={`/events/${featured.slug}`}>
@@ -118,8 +129,18 @@ export default function EventsPage() {
           {/* Section Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="flex items-center gap-2 bg-navy text-ivory px-4 py-2 rounded-xl text-xs font-bold shadow-sm">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                />
               </svg>
               Grid View
             </div>
@@ -134,19 +155,41 @@ export default function EventsPage() {
               >
                 <div className="relative aspect-[16/10]">
                   <AppImage src={event.image} alt={event.title} fill className="object-cover" />
-                  <Badge variant="navy" className="absolute top-3 left-3">{event.category}</Badge>
+                  <Badge variant="navy" className="absolute top-3 left-3">
+                    {event.category}
+                  </Badge>
                 </div>
                 <div className="p-6 space-y-2">
-                  <span className="text-xs text-gold font-bold uppercase">{event.date} • {event.time}</span>
-                  <h3 className="font-display font-bold text-heading-md text-foreground">{event.title}</h3>
+                  <span className="text-xs text-gold font-bold uppercase">
+                    {event.date} • {event.time}
+                  </span>
+                  <h3 className="font-display font-bold text-heading-md text-foreground">
+                    {event.title}
+                  </h3>
                   <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-                    <svg className="w-3.5 h-3.5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <svg
+                      className="w-3.5 h-3.5 text-gold shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
                     </svg>
                     {event.location}
                   </p>
-                  <p className="text-body-sm text-muted-foreground line-clamp-2">{event.description}</p>
+                  <p className="text-body-sm text-muted-foreground line-clamp-2">
+                    {event.description}
+                  </p>
                 </div>
                 <div className="p-6 pt-0">
                   <Link href={`/events/${event.slug}`}>
@@ -165,8 +208,18 @@ export default function EventsPage() {
           {/* Section Label */}
           <div className="flex items-center gap-3 mb-6">
             <div className="flex items-center gap-2 bg-gold text-charcoal px-4 py-2 rounded-xl text-xs font-bold shadow-sm">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
               </svg>
               Calendar View
             </div>
@@ -184,9 +237,16 @@ export default function EventsPage() {
                   className="p-5 border border-border rounded-2xl bg-muted hover:border-gold hover:shadow-md transition-all duration-200 group"
                 >
                   <span className="text-xs font-bold text-gold block mb-1.5">{e.date}</span>
-                  <h4 className="font-display font-bold text-base text-foreground mb-1 group-hover:text-gold transition-colors">{e.title}</h4>
-                  <p className="text-xs text-muted-foreground mb-3">{e.time} • {e.location}</p>
-                  <Link href={`/events/${e.slug}`} className="inline-flex items-center gap-1 text-xs text-gold font-bold hover:underline">
+                  <h4 className="font-display font-bold text-base text-foreground mb-1 group-hover:text-gold transition-colors">
+                    {e.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    {e.time} • {e.location}
+                  </p>
+                  <Link
+                    href={`/events/${e.slug}`}
+                    className="inline-flex items-center gap-1 text-xs text-gold font-bold hover:underline"
+                  >
                     Register →
                   </Link>
                 </div>

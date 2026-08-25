@@ -37,15 +37,30 @@ export default function SingleMinistryPage({ params }: { params: Promise<{ slug:
         >
           <div>
             <label className="block text-xs font-semibold text-foreground mb-1">Your Name</label>
-            <input required type="text" placeholder="Your full name" className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+            <input
+              required
+              type="text"
+              placeholder="Your full name"
+              className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold"
+            />
           </div>
           <div>
             <label className="block text-xs font-semibold text-foreground mb-1">Your Email</label>
-            <input required type="email" placeholder="your.email@example.com" className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+            <input
+              required
+              type="email"
+              placeholder="your.email@example.com"
+              className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold"
+            />
           </div>
           <div>
             <label className="block text-xs font-semibold text-foreground mb-1">Phone Number</label>
-            <input required type="tel" placeholder="+91 98765 43210" className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold" />
+            <input
+              required
+              type="tel"
+              placeholder="+91 98765 43210"
+              className="w-full px-4 py-2.5 bg-input border border-border rounded-xl text-body-sm focus:outline-none focus:ring-2 focus:ring-gold"
+            />
           </div>
           <Button type="submit" variant="gold" className="w-full py-3">
             SUBMIT JOIN REQUEST
@@ -60,7 +75,9 @@ export default function SingleMinistryPage({ params }: { params: Promise<{ slug:
       <Header />
       <main className="min-h-screen bg-background pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <Breadcrumbs items={[{ label: 'Ministries', href: '/ministries' }, { label: ministry.name }]} />
+          <Breadcrumbs
+            items={[{ label: 'Ministries', href: '/ministries' }, { label: ministry.name }]}
+          />
         </div>
 
         {/* Hero */}
@@ -68,14 +85,33 @@ export default function SingleMinistryPage({ params }: { params: Promise<{ slug:
           <div className="relative aspect-[21/9] rounded-3xl overflow-hidden border border-border shadow-2xl">
             <AppImage src={ministry.image} alt={ministry.name} fill className="object-cover" />
             <div className="absolute inset-0 bg-navy/40" />
-            <Badge variant="gold" className="absolute top-6 left-6 font-bold">{ministry.ageGroup || 'Ministry'}</Badge>
+            <Badge variant="gold" className="absolute top-6 left-6 font-bold">
+              {ministry.ageGroup || 'Ministry'}
+            </Badge>
           </div>
 
           <div className="bg-card border border-border p-8 rounded-3xl shadow-sm mt-6 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h1 className="font-display font-bold text-display-md text-foreground">{ministry.name}</h1>
-                <p className="text-body-sm text-gold font-semibold mt-1 flex items-center gap-1.5"><svg className="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg> {ministry.meetingTime}</p>
+                <h1 className="font-display font-bold text-display-md text-foreground">
+                  {ministry.name}
+                </h1>
+                <p className="text-body-sm text-gold font-semibold mt-1 flex items-center gap-1.5">
+                  <svg
+                    className="w-4 h-4 text-gold"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>{' '}
+                  {ministry.meetingTime}
+                </p>
               </div>
               <Button variant="gold" size="lg" onClick={handleJoinClick}>
                 JOIN THIS MINISTRY
@@ -85,16 +121,21 @@ export default function SingleMinistryPage({ params }: { params: Promise<{ slug:
             <hr className="border-border" />
 
             <div>
-              <h3 className="font-display font-bold text-heading-md text-foreground mb-2">Our Vision</h3>
+              <h3 className="font-display font-bold text-heading-md text-foreground mb-2">
+                Our Vision
+              </h3>
               <p className="text-body text-muted-foreground leading-relaxed italic bg-gold/10 p-4 rounded-2xl border border-gold/20 font-display text-lg">
                 &ldquo;{ministry.vision}&rdquo;
               </p>
             </div>
 
-
             <div>
-              <h3 className="font-display font-bold text-heading-md text-foreground mb-2">About the Ministry</h3>
-              <p className="text-body text-muted-foreground leading-relaxed">{ministry.description}</p>
+              <h3 className="font-display font-bold text-heading-md text-foreground mb-2">
+                About the Ministry
+              </h3>
+              <p className="text-body text-muted-foreground leading-relaxed">
+                {ministry.description}
+              </p>
             </div>
           </div>
         </section>

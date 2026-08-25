@@ -48,12 +48,15 @@ export default function PrayerPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">NEED PRAYER?</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              NEED PRAYER?
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               You Don&apos;t Have to Walk Alone
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              Whatever you are going through, our pastoral staff and intercessory prayer team are ready to stand with you in prayer.
+              Whatever you are going through, our pastoral staff and intercessory prayer team are
+              ready to stand with you in prayer.
             </p>
           </div>
         </section>
@@ -63,10 +66,15 @@ export default function PrayerPage() {
           <div className="bg-card border border-sand p-8 sm:p-10 rounded-3xl shadow-card">
             {submitted ? (
               <div className="text-center py-12 space-y-4">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center text-3xl mx-auto">✓</div>
-                <h2 className="font-display font-bold text-heading-xl text-charcoal dark:text-ivory">Your Prayer Request Has Been Received</h2>
+                <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center text-3xl mx-auto">
+                  ✓
+                </div>
+                <h2 className="font-display font-bold text-heading-xl text-charcoal dark:text-ivory">
+                  Your Prayer Request Has Been Received
+                </h2>
                 <p className="text-body text-muted-text dark:text-ivory/80 max-w-md mx-auto leading-relaxed">
-                  Thank you for allowing us to pray with you. Our prayer team will cover your request in prayer. God bless you!
+                  Thank you for allowing us to pray with you. Our prayer team will cover your
+                  request in prayer. God bless you!
                 </p>
                 <Button variant="gold" onClick={() => setSubmitted(false)} className="mt-4">
                   SUBMIT ANOTHER REQUEST
@@ -74,13 +82,19 @@ export default function PrayerPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <h2 className="font-display font-bold text-2xl text-charcoal dark:text-ivory">Submit Your Request</h2>
-                <p className="text-body-sm text-muted-text dark:text-ivory/80">All prayer requests are handled with complete confidentiality.</p>
+                <h2 className="font-display font-bold text-2xl text-charcoal dark:text-ivory">
+                  Submit Your Request
+                </h2>
+                <p className="text-body-sm text-muted-text dark:text-ivory/80">
+                  All prayer requests are handled with complete confidentiality.
+                </p>
 
                 {!anonymous && (
                   <>
                     <div>
-                      <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-1">Your Name</label>
+                      <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-1">
+                        Your Name
+                      </label>
                       <input
                         required
                         type="text"
@@ -94,7 +108,9 @@ export default function PrayerPage() {
                 )}
 
                 <div>
-                  <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-1">Prayer Request Details</label>
+                  <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-1">
+                    Prayer Request Details
+                  </label>
                   <textarea
                     required
                     rows={5}
@@ -113,7 +129,10 @@ export default function PrayerPage() {
                     onChange={(e) => setAnonymous(e.target.checked)}
                     className="w-4 h-4 text-gold rounded border-sand focus:ring-gold"
                   />
-                  <label htmlFor="anon" className="text-body-sm text-charcoal dark:text-ivory font-medium cursor-pointer">
+                  <label
+                    htmlFor="anon"
+                    className="text-body-sm text-charcoal dark:text-ivory font-medium cursor-pointer"
+                  >
                     Keep my request anonymous
                   </label>
                 </div>

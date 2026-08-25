@@ -6,16 +6,38 @@ import { useApp } from '@/context/AppContext';
 export default function AdminPrayerPage() {
   const { addToast } = useApp();
   const [prayers, setPrayers] = useState([
-    { id: 'p1', name: 'Anonymous', request: 'Pray for healing for my mother who is undergoing surgery this week.', date: '2026-08-10', status: 'Pending' },
-    { id: 'p2', name: 'Ramesh Kumar', request: 'Seeking guidance and God\'s open doors for a new job opportunity.', date: '2026-08-09', status: 'Prayed' },
-    { id: 'p3', name: 'Priya S.', request: 'Prayer for peace and restoration in my family.', date: '2026-08-08', status: 'Prayed' },
+    {
+      id: 'p1',
+      name: 'Anonymous',
+      request: 'Pray for healing for my mother who is undergoing surgery this week.',
+      date: '2026-08-10',
+      status: 'Pending',
+    },
+    {
+      id: 'p2',
+      name: 'Ramesh Kumar',
+      request: "Seeking guidance and God's open doors for a new job opportunity.",
+      date: '2026-08-09',
+      status: 'Prayed',
+    },
+    {
+      id: 'p3',
+      name: 'Priya S.',
+      request: 'Prayer for peace and restoration in my family.',
+      date: '2026-08-08',
+      status: 'Prayed',
+    },
   ]);
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="font-display font-bold text-display-sm text-ivory">Prayer Requests Management</h2>
-        <p className="text-xs text-ivory/60">Review prayer requests submitted by members and visitors</p>
+        <h2 className="font-display font-bold text-display-sm text-ivory">
+          Prayer Requests Management
+        </h2>
+        <p className="text-xs text-ivory/60">
+          Review prayer requests submitted by members and visitors
+        </p>
       </div>
 
       <div className="bg-navy border border-gold/20 rounded-2xl overflow-hidden shadow-xl">
@@ -36,7 +58,9 @@ export default function AdminPrayerPage() {
                 <td className="p-4 max-w-md">{p.request}</td>
                 <td className="p-4">{p.date}</td>
                 <td className="p-4">
-                  <span className={`px-2 py-0.5 rounded font-bold ${p.status === 'Prayed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}`}>
+                  <span
+                    className={`px-2 py-0.5 rounded font-bold ${p.status === 'Prayed' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}`}
+                  >
                     {p.status}
                   </span>
                 </td>
@@ -45,7 +69,11 @@ export default function AdminPrayerPage() {
                     variant="gold"
                     size="sm"
                     onClick={() => {
-                      setPrayers(prayers.map((item) => (item.id === p.id ? { ...item, status: 'Prayed' } : item)));
+                      setPrayers(
+                        prayers.map((item) =>
+                          item.id === p.id ? { ...item, status: 'Prayed' } : item
+                        )
+                      );
                       addToast({ type: 'success', title: 'Marked as Prayed' });
                     }}
                   >

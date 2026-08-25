@@ -15,8 +15,10 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
           const increment = target / (1800 / 16);
           const timer = setInterval(() => {
             start += increment;
-            if (start >= target) { setCount(target); clearInterval(timer); }
-            else setCount(Math.floor(start));
+            if (start >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else setCount(Math.floor(start));
           }, 16);
         }
       },
@@ -26,7 +28,12 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
     return () => observer.disconnect();
   }, [target]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {count}
+      {suffix}
+    </span>
+  );
 }
 
 const impacts = [
@@ -41,10 +48,15 @@ export default function GiveImpact() {
     <section className="py-16 bg-church-green relative overflow-hidden" aria-label="Giving impact">
       <div className="absolute inset-0 cross-pattern opacity-5 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <p className="text-center text-church-gold/70 text-xs font-semibold tracking-widest uppercase mb-10">Your Giving Makes This Possible</p>
+        <p className="text-center text-church-gold/70 text-xs font-semibold tracking-widest uppercase mb-10">
+          Your Giving Makes This Possible
+        </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {impacts.map((item, i) => (
-            <div key={i} className="text-center glass-card rounded-2xl p-6 border border-church-gold/20">
+            <div
+              key={i}
+              className="text-center glass-card rounded-2xl p-6 border border-church-gold/20"
+            >
               <p className="font-display text-4xl sm:text-5xl font-bold text-church-gold mb-2">
                 <AnimatedCounter target={item.value} suffix={item.suffix} />
               </p>

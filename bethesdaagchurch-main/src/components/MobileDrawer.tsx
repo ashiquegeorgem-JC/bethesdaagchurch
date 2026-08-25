@@ -89,14 +89,34 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
           {/* Top Bar */}
           <div className="flex items-center justify-between border-b border-gold/20 pb-4">
             <Link href="/" onClick={onClose} className="flex items-center gap-3">
-              <AppImage src="/bethesda-logo-transparent.png" alt="Bethesda AG Church" width={40} height={40} className="h-10 w-auto object-contain" />
+              <AppImage
+                src="/bethesda-logo-transparent.png"
+                alt="Bethesda AG Church"
+                width={40}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
               <div className="flex flex-col justify-center items-start text-left leading-none gap-0.5">
-                <span className="font-display font-bold text-lg text-ivory tracking-[0.08em] leading-none text-left">BETHESDA</span>
-                <span className="text-[10px] text-gold font-bold tracking-[0.22em] uppercase leading-none text-left">AG CHURCH</span>
+                <span className="font-display font-bold text-lg text-ivory tracking-[0.08em] leading-none text-left">
+                  BETHESDA
+                </span>
+                <span className="text-[10px] text-gold font-bold tracking-[0.22em] uppercase leading-none text-left">
+                  AG CHURCH
+                </span>
               </div>
             </Link>
-            <button onClick={onClose} className="p-2 rounded-full hover:bg-white/10 text-ivory transition-colors" aria-label="Close menu">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full hover:bg-white/10 text-ivory transition-colors"
+              aria-label="Close menu"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -107,7 +127,11 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             {MENU_ITEMS.map((item) => (
               <div key={item.label}>
                 <div className="flex items-center justify-between py-2.5 border-b border-white/10">
-                  <Link href={item.href} onClick={onClose} className="font-display font-semibold text-lg text-ivory hover:text-gold transition-colors">
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className="font-display font-semibold text-lg text-ivory hover:text-gold transition-colors"
+                  >
                     {item.label}
                   </Link>
                   {item.sub && (
@@ -115,7 +139,13 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                       onClick={() => setExpanded(expanded === item.label ? null : item.label)}
                       className="p-1 text-gold hover:text-ivory transition-colors"
                     >
-                      <svg className={`w-5 h-5 transition-transform duration-200 ${expanded === item.label ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <svg
+                        className={`w-5 h-5 transition-transform duration-200 ${expanded === item.label ? 'rotate-180' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -126,7 +156,12 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                 {item.sub && expanded === item.label && (
                   <div className="pl-4 py-2 space-y-2 border-l border-gold/30 my-1 bg-white/5 rounded-r-lg">
                     {item.sub.map((s) => (
-                      <Link key={s.href} href={s.href} onClick={onClose} className="block text-sm text-ivory/80 hover:text-gold py-1 transition-colors">
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        onClick={onClose}
+                        className="block text-sm text-ivory/80 hover:text-gold py-1 transition-colors"
+                      >
                         {s.label}
                       </Link>
                     ))}

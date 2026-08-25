@@ -10,7 +10,11 @@ export default function AdminSermonsPage() {
 
   const handleDelete = (id: string) => {
     setSermonList((prev) => prev.filter((s) => s.id !== id));
-    addToast({ type: 'success', title: 'Sermon Deleted', message: 'Sermon removed from frontend list.' });
+    addToast({
+      type: 'success',
+      title: 'Sermon Deleted',
+      message: 'Sermon removed from frontend list.',
+    });
   };
 
   const handleAddSermon = () => {
@@ -21,21 +25,40 @@ export default function AdminSermonsPage() {
           onSubmit={(e) => {
             e.preventDefault();
             closeModal();
-            addToast({ type: 'success', title: 'Sermon Added', message: 'New sermon added to database (mock).' });
+            addToast({
+              type: 'success',
+              title: 'Sermon Added',
+              message: 'New sermon added to database (mock).',
+            });
           }}
           className="space-y-4 text-foreground"
         >
           <div>
             <label className="block text-xs font-semibold mb-1">Sermon Title</label>
-            <input required type="text" placeholder="Title" className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs" />
+            <input
+              required
+              type="text"
+              placeholder="Title"
+              className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs"
+            />
           </div>
           <div>
             <label className="block text-xs font-semibold mb-1">Speaker</label>
-            <input required type="text" placeholder="Pastor Samuel Thomas" className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs" />
+            <input
+              required
+              type="text"
+              placeholder="Pastor Samuel Thomas"
+              className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs"
+            />
           </div>
           <div>
             <label className="block text-xs font-semibold mb-1">Series</label>
-            <input required type="text" placeholder="Foundations of Faith" className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs" />
+            <input
+              required
+              type="text"
+              placeholder="Foundations of Faith"
+              className="w-full px-3 py-2 bg-input border border-border rounded-xl text-xs"
+            />
           </div>
           <Button type="submit" variant="gold" className="w-full py-2.5">
             SAVE SERMON
@@ -50,7 +73,9 @@ export default function AdminSermonsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-display font-bold text-display-sm text-ivory">Sermons Management</h2>
-          <p className="text-xs text-ivory/60">Add, edit, or delete sermons in the public library</p>
+          <p className="text-xs text-ivory/60">
+            Add, edit, or delete sermons in the public library
+          </p>
         </div>
         <Button variant="gold" size="sm" onClick={handleAddSermon}>
           + ADD NEW SERMON
@@ -76,7 +101,10 @@ export default function AdminSermonsPage() {
                 <td className="p-4">{s.date}</td>
                 <td className="p-4 text-gold">{s.series}</td>
                 <td className="p-4 text-right space-x-2">
-                  <button onClick={() => handleDelete(s.id)} className="px-2.5 py-1 bg-red-600/30 text-red-400 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleDelete(s.id)}
+                    className="px-2.5 py-1 bg-red-600/30 text-red-400 hover:bg-red-600 hover:text-white rounded-lg transition-colors"
+                  >
                     Delete
                   </button>
                 </td>

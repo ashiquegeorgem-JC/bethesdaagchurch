@@ -12,13 +12,35 @@ export interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({ icon, title, description, actionLabel, onAction, className }: EmptyStateProps) {
+export function EmptyState({
+  icon,
+  title,
+  description,
+  actionLabel,
+  onAction,
+  className,
+}: EmptyStateProps) {
   return (
-    <div className={cn('flex flex-col items-center justify-center p-12 text-center bg-card border border-border rounded-2xl max-w-md mx-auto my-8', className)}>
+    <div
+      className={cn(
+        'flex flex-col items-center justify-center p-12 text-center bg-card border border-border rounded-2xl max-w-md mx-auto my-8',
+        className
+      )}
+    >
       <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4">
         {icon || (
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
           </svg>
         )}
       </div>

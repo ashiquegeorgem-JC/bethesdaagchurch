@@ -32,12 +32,15 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">WHO WE ARE</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              WHO WE ARE
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               About Bethesda AG Church
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              Serving the city of Bengaluru through Spirit-filled worship, biblical discipleship, and passionate outreach.
+              Serving the city of Bengaluru through Spirit-filled worship, biblical discipleship,
+              and passionate outreach.
             </p>
           </div>
         </section>
@@ -46,7 +49,9 @@ export default function AboutPage() {
         <section className="py-20 bg-cream dark:bg-charcoal border-b border-sand/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <span className="inline-block text-xs font-semibold tracking-widest uppercase text-gold mb-2">OUR HEART & PURPOSE</span>
+              <span className="inline-block text-xs font-semibold tracking-widest uppercase text-gold mb-2">
+                OUR HEART & PURPOSE
+              </span>
               <h2 className="font-display text-4xl sm:text-5xl font-bold text-charcoal dark:text-ivory">
                 Our Mission & <span className="text-gold">Vision</span>
               </h2>
@@ -60,19 +65,39 @@ export default function AboutPage() {
               <div className="bg-ivory dark:bg-charcoal/90 rounded-3xl p-8 sm:p-10 border border-sand shadow-card relative overflow-hidden flex flex-col justify-between">
                 <div className="space-y-4">
                   <div className="w-14 h-14 rounded-2xl bg-gold/15 flex items-center justify-center text-gold">
-                    <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    <svg
+                      className="w-7 h-7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                      />
                     </svg>
                   </div>
-                  <h3 className="font-display text-3xl font-bold text-charcoal dark:text-ivory">Our Mission</h3>
-                  <p className="text-xs italic text-gold font-medium">Inspired by John 13:34 — &ldquo;A new command I give you: Love one another. As I have loved you, so you must love one another.&rdquo;</p>
+                  <h3 className="font-display text-3xl font-bold text-charcoal dark:text-ivory">
+                    Our Mission
+                  </h3>
+                  <p className="text-xs italic text-gold font-medium">
+                    Inspired by John 13:34 — &ldquo;A new command I give you: Love one another. As I
+                    have loved you, so you must love one another.&rdquo;
+                  </p>
                   <p className="text-base text-muted-text dark:text-ivory/80 leading-relaxed">
-                    Our mission is to be a community defined by genuine, selfless love that reflects God&apos;s heart for humanity. We are dedicated to sharing the Gospel, serving with compassion, and bringing spiritual transformation to lives.
+                    Our mission is to be a community defined by genuine, selfless love that reflects
+                    God&apos;s heart for humanity. We are dedicated to sharing the Gospel, serving
+                    with compassion, and bringing spiritual transformation to lives.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-6">
                   {['Loving Genuinely', 'Serving Selflessly', 'Reflecting Christ'].map((tag) => (
-                    <span key={tag} className="px-3.5 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold border border-gold/30">
+                    <span
+                      key={tag}
+                      className="px-3.5 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold border border-gold/30"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -83,22 +108,45 @@ export default function AboutPage() {
               <div className="bg-ivory dark:bg-charcoal/90 rounded-3xl p-8 sm:p-10 border border-sand shadow-card relative overflow-hidden flex flex-col justify-between">
                 <div className="space-y-4">
                   <div className="w-14 h-14 rounded-2xl bg-gold flex items-center justify-center text-white dark:text-charcoal">
-                    <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <svg
+                      className="w-7 h-7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
                     </svg>
                   </div>
-                  <h3 className="font-display text-3xl font-bold text-charcoal dark:text-ivory">Our Vision</h3>
+                  <h3 className="font-display text-3xl font-bold text-charcoal dark:text-ivory">
+                    Our Vision
+                  </h3>
                   <p className="text-base text-muted-text dark:text-ivory/80 leading-relaxed">
-                    To be a transformative community that raises up passionate disciples of Jesus. We aim to instill Kingdom values in every believer, empowering them to impact their homes, workplaces, and the city of Bengaluru for Christ.
+                    To be a transformative community that raises up passionate disciples of Jesus.
+                    We aim to instill Kingdom values in every believer, empowering them to impact
+                    their homes, workplaces, and the city of Bengaluru for Christ.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2 pt-6">
-                  {['Raising Disciples', 'Instilling Kingdom Values', 'Impacting Our World'].map((tag) => (
-                    <span key={tag} className="px-3.5 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold border border-gold/30">
-                      {tag}
-                    </span>
-                  ))}
+                  {['Raising Disciples', 'Instilling Kingdom Values', 'Impacting Our World'].map(
+                    (tag) => (
+                      <span
+                        key={tag}
+                        className="px-3.5 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold border border-gold/30"
+                      >
+                        {tag}
+                      </span>
+                    )
+                  )}
                 </div>
               </div>
             </div>

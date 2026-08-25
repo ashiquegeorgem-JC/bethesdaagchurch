@@ -27,7 +27,9 @@ export default function LeadershipPage() {
           <div className="text-center">
             <span className="text-xs font-bold text-gold uppercase">{leader.role}</span>
           </div>
-          <p className="text-body-sm text-foreground leading-relaxed pt-2 border-t border-border">{leader.bio}</p>
+          <p className="text-body-sm text-foreground leading-relaxed pt-2 border-t border-border">
+            {leader.bio}
+          </p>
         </div>
       ),
     });
@@ -53,12 +55,15 @@ export default function LeadershipPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">PASTORAL & LEADERSHIP</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              PASTORAL & LEADERSHIP
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               Our Leadership Team
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              Meet the dedicated pastors, directors, and elders serving Bethesda AG Church with humility, love, and devotion.
+              Meet the dedicated pastors, directors, and elders serving Bethesda AG Church with
+              humility, love, and devotion.
             </p>
           </div>
         </section>
@@ -76,10 +81,16 @@ export default function LeadershipPage() {
                   <AppImage src={leader.image} alt={leader.name} fill className="object-cover" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-heading-md text-foreground group-hover:text-gold transition-colors">{leader.name}</h3>
-                  <span className="text-xs font-bold text-gold uppercase tracking-wider">{leader.role}</span>
+                  <h3 className="font-display font-bold text-heading-md text-foreground group-hover:text-gold transition-colors">
+                    {leader.name}
+                  </h3>
+                  <span className="text-xs font-bold text-gold uppercase tracking-wider">
+                    {leader.role}
+                  </span>
                 </div>
-                <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed">{leader.bio}</p>
+                <p className="text-body-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                  {leader.bio}
+                </p>
                 <Button variant="ghost" size="sm" className="text-xs font-bold text-gold">
                   View Profile →
                 </Button>

@@ -12,10 +12,16 @@ export default function AdminBlogPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-display font-bold text-display-sm text-ivory">Blog Articles Management</h2>
+          <h2 className="font-display font-bold text-display-sm text-ivory">
+            Blog Articles Management
+          </h2>
           <p className="text-xs text-ivory/60">Create and publish church articles</p>
         </div>
-        <Button variant="gold" size="sm" onClick={() => addToast({ type: 'info', title: 'New Article Editor' })}>
+        <Button
+          variant="gold"
+          size="sm"
+          onClick={() => addToast({ type: 'info', title: 'New Article Editor' })}
+        >
           + NEW ARTICLE
         </Button>
       </div>
@@ -39,7 +45,15 @@ export default function AdminBlogPage() {
                 <td className="p-4 text-gold">{p.category}</td>
                 <td className="p-4">{p.date}</td>
                 <td className="p-4 text-right">
-                  <button onClick={() => { setPosts(posts.filter((b) => b.id !== p.id)); addToast({ type: 'success', title: 'Article Deleted' }); }} className="px-2.5 py-1 bg-red-600/30 text-red-400 rounded hover:bg-red-600 hover:text-white">Delete</button>
+                  <button
+                    onClick={() => {
+                      setPosts(posts.filter((b) => b.id !== p.id));
+                      addToast({ type: 'success', title: 'Article Deleted' });
+                    }}
+                    className="px-2.5 py-1 bg-red-600/30 text-red-400 rounded hover:bg-red-600 hover:text-white"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

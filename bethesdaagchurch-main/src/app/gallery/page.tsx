@@ -16,7 +16,9 @@ export default function GalleryPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const filteredItems = GALLERY_ITEMS.filter((item) => category === 'All' || item.category === category);
+  const filteredItems = GALLERY_ITEMS.filter(
+    (item) => category === 'All' || item.category === category
+  );
 
   const openImage = (index: number) => {
     setCurrentIndex(index);
@@ -43,12 +45,15 @@ export default function GalleryPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/90 to-navy" />
           </div>
           <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">MOMENTS OF FAITH</span>
+            <span className="text-overline font-semibold uppercase tracking-[0.25em] text-gold">
+              MOMENTS OF FAITH
+            </span>
             <h1 className="font-display font-bold text-display-md sm:text-display-lg text-ivory mt-3 mb-4 leading-tight">
               Photo Gallery
             </h1>
             <p className="text-body-lg text-ivory/90 max-w-2xl mx-auto leading-relaxed">
-              Capturing moments of worship, fellowship, outreach, and community life at Bethesda AG Church.
+              Capturing moments of worship, fellowship, outreach, and community life at Bethesda AG
+              Church.
             </p>
           </div>
         </section>
@@ -61,7 +66,9 @@ export default function GalleryPage() {
                 key={cat}
                 onClick={() => setCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
-                  category === cat ? 'bg-gold text-navy-deep font-bold shadow-md' : 'bg-card text-foreground border border-border hover:border-gold'
+                  category === cat
+                    ? 'bg-gold text-navy-deep font-bold shadow-md'
+                    : 'bg-card text-foreground border border-border hover:border-gold'
                 }`}
               >
                 {cat}
@@ -79,7 +86,12 @@ export default function GalleryPage() {
                 onClick={() => openImage(idx)}
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer border border-border shadow-sm hover:shadow-2xl transition-all duration-300"
               >
-                <AppImage src={item.image} alt={item.caption} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <AppImage
+                  src={item.image}
+                  alt={item.caption}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                   <span className="text-[10px] text-gold font-bold uppercase">{item.category}</span>
                   <h4 className="font-display font-bold text-white text-sm">{item.caption}</h4>

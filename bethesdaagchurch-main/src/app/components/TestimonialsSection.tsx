@@ -34,8 +34,12 @@ export default function TestimonialsSection() {
                   <AppImage src={test.image} alt={test.name} fill className="object-cover" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-charcoal dark:text-ivory text-base">{test.name}</h4>
-                  <span className="text-xs text-gold font-semibold uppercase tracking-wider">{test.category}</span>
+                  <h4 className="font-display font-bold text-charcoal dark:text-ivory text-base">
+                    {test.name}
+                  </h4>
+                  <span className="text-xs text-gold font-semibold uppercase tracking-wider">
+                    {test.category}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -44,7 +48,9 @@ export default function TestimonialsSection() {
 
         <div className="text-center">
           <Link href="/community/testimonies">
-            <Button variant="gold" size="lg">READ MORE TESTIMONIES</Button>
+            <Button variant="gold" size="lg">
+              READ MORE TESTIMONIES
+            </Button>
           </Link>
         </div>
       </div>

@@ -30,12 +30,32 @@ export function SearchOverlay() {
     }
   }, [searchOpen]);
 
-  const filteredSermons = query ? SERMONS.filter((s) => s.title.toLowerCase().includes(query.toLowerCase()) || s.speaker.toLowerCase().includes(query.toLowerCase())) : [];
-  const filteredEvents = query ? EVENTS.filter((e) => e.title.toLowerCase().includes(query.toLowerCase()) || e.category.toLowerCase().includes(query.toLowerCase())) : [];
-  const filteredMinistries = query ? MINISTRIES.filter((m) => m.name.toLowerCase().includes(query.toLowerCase())) : [];
-  const filteredBlog = query ? BLOG_POSTS.filter((b) => b.title.toLowerCase().includes(query.toLowerCase())) : [];
+  const filteredSermons = query
+    ? SERMONS.filter(
+        (s) =>
+          s.title.toLowerCase().includes(query.toLowerCase()) ||
+          s.speaker.toLowerCase().includes(query.toLowerCase())
+      )
+    : [];
+  const filteredEvents = query
+    ? EVENTS.filter(
+        (e) =>
+          e.title.toLowerCase().includes(query.toLowerCase()) ||
+          e.category.toLowerCase().includes(query.toLowerCase())
+      )
+    : [];
+  const filteredMinistries = query
+    ? MINISTRIES.filter((m) => m.name.toLowerCase().includes(query.toLowerCase()))
+    : [];
+  const filteredBlog = query
+    ? BLOG_POSTS.filter((b) => b.title.toLowerCase().includes(query.toLowerCase()))
+    : [];
 
-  const hasResults = filteredSermons.length > 0 || filteredEvents.length > 0 || filteredMinistries.length > 0 || filteredBlog.length > 0;
+  const hasResults =
+    filteredSermons.length > 0 ||
+    filteredEvents.length > 0 ||
+    filteredMinistries.length > 0 ||
+    filteredBlog.length > 0;
 
   return (
     <AnimatePresence>
@@ -59,8 +79,18 @@ export function SearchOverlay() {
           >
             {/* Input bar */}
             <div className="flex items-center gap-3 px-6 py-4 border-b border-border">
-              <svg className="w-6 h-6 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <svg
+                className="w-6 h-6 text-gold shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
               <input
                 type="text"
@@ -82,7 +112,9 @@ export function SearchOverlay() {
             <div className="max-h-[60vh] overflow-y-auto p-6 space-y-6">
               {!query && (
                 <div className="text-center py-8 text-muted-foreground">
-                  <p className="text-sm">Type to start searching across sermons, events, ministries, and blog articles...</p>
+                  <p className="text-sm">
+                    Type to start searching across sermons, events, ministries, and blog articles...
+                  </p>
                 </div>
               )}
 
@@ -94,7 +126,9 @@ export function SearchOverlay() {
 
               {filteredSermons.length > 0 && (
                 <div>
-                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">Sermons</h4>
+                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">
+                    Sermons
+                  </h4>
                   <div className="space-y-2">
                     {filteredSermons.map((sermon) => (
                       <Link
@@ -105,9 +139,13 @@ export function SearchOverlay() {
                       >
                         <div>
                           <p className="font-semibold text-foreground text-sm">{sermon.title}</p>
-                          <p className="text-xs text-muted-foreground">{sermon.speaker} • {sermon.date}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {sermon.speaker} • {sermon.date}
+                          </p>
                         </div>
-                        <span className="text-xs px-2.5 py-1 bg-gold/15 text-gold rounded-full font-semibold">{sermon.series}</span>
+                        <span className="text-xs px-2.5 py-1 bg-gold/15 text-gold rounded-full font-semibold">
+                          {sermon.series}
+                        </span>
                       </Link>
                     ))}
                   </div>
@@ -116,7 +154,9 @@ export function SearchOverlay() {
 
               {filteredEvents.length > 0 && (
                 <div>
-                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">Events</h4>
+                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">
+                    Events
+                  </h4>
                   <div className="space-y-2">
                     {filteredEvents.map((event) => (
                       <Link
@@ -127,9 +167,13 @@ export function SearchOverlay() {
                       >
                         <div>
                           <p className="font-semibold text-foreground text-sm">{event.title}</p>
-                          <p className="text-xs text-muted-foreground">{event.date} • {event.location}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {event.date} • {event.location}
+                          </p>
                         </div>
-                        <span className="text-xs px-2.5 py-1 bg-navy text-ivory rounded-full font-semibold">{event.category}</span>
+                        <span className="text-xs px-2.5 py-1 bg-navy text-ivory rounded-full font-semibold">
+                          {event.category}
+                        </span>
                       </Link>
                     ))}
                   </div>
@@ -138,7 +182,9 @@ export function SearchOverlay() {
 
               {filteredMinistries.length > 0 && (
                 <div>
-                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">Ministries</h4>
+                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">
+                    Ministries
+                  </h4>
                   <div className="space-y-2">
                     {filteredMinistries.map((ministry) => (
                       <Link
@@ -160,7 +206,9 @@ export function SearchOverlay() {
 
               {filteredBlog.length > 0 && (
                 <div>
-                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">Articles</h4>
+                  <h4 className="text-overline font-semibold uppercase text-gold tracking-wider mb-3">
+                    Articles
+                  </h4>
                   <div className="space-y-2">
                     {filteredBlog.map((post) => (
                       <Link
@@ -171,7 +219,9 @@ export function SearchOverlay() {
                       >
                         <div>
                           <p className="font-semibold text-foreground text-sm">{post.title}</p>
-                          <p className="text-xs text-muted-foreground">{post.author} • {post.date}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {post.author} • {post.date}
+                          </p>
                         </div>
                         <span className="text-xs font-semibold text-gold">Read Article →</span>
                       </Link>

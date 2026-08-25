@@ -20,7 +20,11 @@ export default function AdminEventsPage() {
           <h2 className="font-display font-bold text-display-sm text-ivory">Events Management</h2>
           <p className="text-xs text-ivory/60">Manage church events and registrations</p>
         </div>
-        <Button variant="gold" size="sm" onClick={() => addToast({ type: 'info', title: 'Add Event Modal Triggered' })}>
+        <Button
+          variant="gold"
+          size="sm"
+          onClick={() => addToast({ type: 'info', title: 'Add Event Modal Triggered' })}
+        >
           + ADD NEW EVENT
         </Button>
       </div>
@@ -41,10 +45,15 @@ export default function AdminEventsPage() {
               <tr key={e.id} className="hover:bg-white/5 transition-colors">
                 <td className="p-4 font-semibold text-white">{e.title}</td>
                 <td className="p-4 text-gold">{e.category}</td>
-                <td className="p-4">{e.date} • {e.time}</td>
+                <td className="p-4">
+                  {e.date} • {e.time}
+                </td>
                 <td className="p-4">{e.location}</td>
                 <td className="p-4 text-right">
-                  <button onClick={() => handleDelete(e.id)} className="px-2.5 py-1 bg-red-600/30 text-red-400 hover:bg-red-600 hover:text-white rounded-lg transition-colors">
+                  <button
+                    onClick={() => handleDelete(e.id)}
+                    className="px-2.5 py-1 bg-red-600/30 text-red-400 hover:bg-red-600 hover:text-white rounded-lg transition-colors"
+                  >
                     Delete
                   </button>
                 </td>

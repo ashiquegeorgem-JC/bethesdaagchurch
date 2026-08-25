@@ -37,9 +37,14 @@ export default function PrayerSection() {
           description="&ldquo;Whatever you're carrying, we'd be honoured to pray with you.&rdquo;"
         />
 
-        <form onSubmit={handleSubmit} className="bg-card border border-sand p-6 sm:p-10 rounded-3xl shadow-card space-y-5 text-left max-w-2xl mx-auto mt-8">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-card border border-sand p-6 sm:p-10 rounded-3xl shadow-card space-y-5 text-left max-w-2xl mx-auto mt-8"
+        >
           <div>
-            <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-2">Your Prayer Request</label>
+            <label className="block text-xs font-semibold text-charcoal dark:text-ivory mb-2">
+              Your Prayer Request
+            </label>
             <textarea
               required
               rows={4}

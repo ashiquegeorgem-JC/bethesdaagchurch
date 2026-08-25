@@ -14,11 +14,17 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="py-16 bg-church-ivory relative overflow-hidden" aria-labelledby="newsletter-heading">
+    <section
+      className="py-16 bg-church-ivory relative overflow-hidden"
+      aria-labelledby="newsletter-heading"
+    >
       <div className="absolute inset-0 wave-texture opacity-30 pointer-events-none" />
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center relative z-10">
-        <h2 id="newsletter-heading" className="font-display text-3xl sm:text-4xl font-bold text-church-green mb-3">
+        <h2
+          id="newsletter-heading"
+          className="font-display text-3xl sm:text-4xl font-bold text-church-green mb-3"
+        >
           Stay <span className="text-gradient-gold">Connected</span>
         </h2>
         <p className="text-church-bronze text-sm mb-8">
@@ -28,10 +34,15 @@ export default function NewsletterSection() {
         {submitted ? (
           <div className="glass-card-ivory rounded-2xl p-6 border border-church-gold/30 shadow-md">
             <p className="text-church-green font-display text-xl font-semibold mb-2">Thank you!</p>
-            <p className="text-church-bronze text-sm">You're now connected with the Bethesda family. God bless you!</p>
+            <p className="text-church-bronze text-sm">
+              You&apos;re now connected with the Bethesda family. God bless you!
+            </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          >
             <input
               type="email"
               value={email}
@@ -49,7 +60,9 @@ export default function NewsletterSection() {
           </form>
         )}
 
-        <p className="text-church-bronze/40 text-xs mt-4">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        <p className="text-church-bronze/40 text-xs mt-4">
+          No spam. Unsubscribe anytime. We respect your privacy.
+        </p>
       </div>
     </section>
   );

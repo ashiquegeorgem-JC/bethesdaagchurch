@@ -35,7 +35,8 @@ export const metadata: Metadata = {
     default: 'Bethesda AG Church — A Place to Belong, Grow, and Encounter God',
     template: '%s | Bethesda AG Church',
   },
-  description: 'Bethesda AG Church in Bengaluru — a vibrant community of faith offering multilingual worship, inspiring messages, youth programs, and community outreach. Join us this Sunday.',
+  description:
+    'Bethesda AG Church in Bengaluru — a vibrant community of faith offering multilingual worship, inspiring messages, youth programs, and community outreach. Join us this Sunday.',
   icons: {
     icon: [
       { url: '/favicon.ico', type: 'image/x-icon' },
@@ -46,7 +47,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Bethesda AG Church — Bengaluru',
-    description: 'A place to belong. A place to grow. A place to encounter God. Join us for worship, community, and transformation.',
+    description:
+      'A place to belong. A place to grow. A place to encounter God. Join us for worship, community, and transformation.',
     images: [{ url: '/bethesda-logo-transparent.png', width: 1200, height: 630 }],
     type: 'website',
   },
@@ -54,7 +56,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorantGaramond.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${cormorantGaramond.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />

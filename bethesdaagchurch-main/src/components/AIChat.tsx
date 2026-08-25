@@ -13,7 +13,10 @@ interface Message {
 export function AIChat() {
   const { chatOpen, setChatOpen } = useApp();
   const [messages, setMessages] = useState<Message[]>([
-    { sender: 'ai', text: 'Hello! I am your Bethesda AI assistant. How can I help you today? Feel free to ask about service times, location, prayer, or events.' },
+    {
+      sender: 'ai',
+      text: 'Hello! I am your Bethesda AI assistant. How can I help you today? Feel free to ask about service times, location, prayer, or events.',
+    },
   ]);
   const [input, setInput] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -50,7 +53,7 @@ export function AIChat() {
       } else {
         const response =
           AI_RESPONSES[text] ||
-          "Thank you for asking! For specific inquiries, feel free to connect with our church office or reach out via WhatsApp at +91 97433 16337. God bless you!";
+          'Thank you for asking! For specific inquiries, feel free to connect with our church office or reach out via WhatsApp at +91 97433 16337. God bless you!';
         setMessages((prev) => [...prev, { sender: 'ai', text: response }]);
       }
     }, 500);
@@ -66,10 +69,22 @@ export function AIChat() {
         className="fixed bottom-6 left-6 z-[9999] flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-charcoal text-ivory border border-gold/40 shadow-elevated hover:bg-charcoal/90 hover:scale-105 transition-all duration-300 group"
         aria-label="Ask Bethesda AI"
       >
-        <svg className="w-5 h-5 text-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        <svg
+          className="w-5 h-5 text-gold shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+          />
         </svg>
-        <span className="text-sm font-semibold tracking-wider font-display text-gold group-hover:text-gold-soft">Ask Bethesda</span>
+        <span className="text-sm font-semibold tracking-wider font-display text-gold group-hover:text-gold-soft">
+          Ask Bethesda
+        </span>
       </button>
 
       {/* Chat Panel */}
@@ -85,8 +100,18 @@ export function AIChat() {
             <div className="bg-charcoal text-ivory p-4 px-6 flex items-center justify-between border-b border-gold/20">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center text-gold">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 </div>
                 <div>
@@ -99,7 +124,13 @@ export function AIChat() {
                 className="text-ivory/60 hover:text-ivory p-1.5 rounded-full hover:bg-white/10 transition-colors"
                 aria-label="Close chat"
               >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -108,7 +139,10 @@ export function AIChat() {
             {/* Chat Body with Auto-Scroll */}
             <div className="flex-1 p-5 overflow-y-auto space-y-4">
               {messages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div
+                  key={i}
+                  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
                   <div
                     className={`max-w-[85%] p-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed ${
                       msg.sender === 'user'
@@ -166,7 +200,13 @@ export function AIChat() {
                 className="p-2.5 rounded-xl bg-gold text-white dark:text-charcoal hover:bg-gold-dark font-bold transition-colors shrink-0"
                 aria-label="Send message"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>

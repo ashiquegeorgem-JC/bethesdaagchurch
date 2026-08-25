@@ -20,15 +20,21 @@ export default function DevotionalsPage() {
       <Header />
       <main className="min-h-screen bg-background pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <Breadcrumbs items={[{ label: 'Resources', href: '/resources' }, { label: 'Daily Devotionals' }]} />
+          <Breadcrumbs
+            items={[{ label: 'Resources', href: '/resources' }, { label: 'Daily Devotionals' }]}
+          />
         </div>
 
         {/* Calm Reading Container */}
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="bg-card border border-border p-8 sm:p-12 rounded-3xl shadow-xl space-y-8">
             <div className="text-center space-y-2">
-              <span className="text-xs font-bold text-gold uppercase tracking-widest">{current.date} • DAILY DEVOTIONAL</span>
-              <h1 className="font-display font-bold text-display-md text-foreground">{current.title}</h1>
+              <span className="text-xs font-bold text-gold uppercase tracking-widest">
+                {current.date} • DAILY DEVOTIONAL
+              </span>
+              <h1 className="font-display font-bold text-display-md text-foreground">
+                {current.title}
+              </h1>
             </div>
 
             <div className="bg-gold/10 border-l-4 border-gold p-6 rounded-r-2xl">
@@ -43,7 +49,9 @@ export default function DevotionalsPage() {
             </div>
 
             <div className="bg-muted p-6 rounded-2xl space-y-2 border border-border">
-              <h3 className="font-display font-bold text-heading-md text-foreground">Today&apos;s Prayer</h3>
+              <h3 className="font-display font-bold text-heading-md text-foreground">
+                Today&apos;s Prayer
+              </h3>
               <p className="text-body-sm italic text-muted-foreground">{current.prayer}</p>
             </div>
 
