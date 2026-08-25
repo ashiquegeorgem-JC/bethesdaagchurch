@@ -1,8 +1,9 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
+import { useApp } from '@/context/AppContext';
 
 interface YouTubeVideo {
   id: string;
@@ -13,8 +14,11 @@ interface YouTubeVideo {
 }
 
 function formatDate(iso: string): string {
+  if (!iso) return '';
   try {
-    return new Date(iso).toLocaleDateString('en-IN', {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-IN', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -25,18 +29,9 @@ function formatDate(iso: string): string {
 }
 
 export default function SermonsSection() {
-  const [videos, setVideos] = useState<YouTubeVideo[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('/api/youtube')
-      .then((r) => r.json())
-      .then((data) => {
-        setVideos(data.videos || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  const { videos: appVideos, videosLoading, isLive } = useApp();
+  const videos = appVideos as YouTubeVideo[];
+  const loading = videosLoading;
 
   const featured = videos[0];
   const recent = videos.slice(1, 3);

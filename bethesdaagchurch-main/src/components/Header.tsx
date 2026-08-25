@@ -203,22 +203,17 @@ export default function Header() {
               Messages
             </Link>
 
-            {/* Live Indicator if Active */}
-            {isLive ? (
-              <Link
-                href="/watch/live"
+            {/* Live Indicator if Active (Links directly to YouTube Live) */}
+            {isLive && (
+              <a
+                href={liveVideo?.url || "https://www.youtube.com/@Bethesda_AG/live"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-xs font-bold uppercase tracking-wider hover:bg-red-700 transition-all shadow-md animate-pulse"
               >
                 <span className="w-2 h-2 rounded-full bg-white animate-ping" />
                 LIVE NOW
-              </Link>
-            ) : (
-              <Link
-                href="/watch/live"
-                className="text-body-sm font-medium text-charcoal/90 dark:text-ivory/90 hover:text-gold transition-colors py-2"
-              >
-                Watch Live
-              </Link>
+              </a>
             )}
 
             <Link

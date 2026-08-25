@@ -3,7 +3,9 @@ export function cn(...classes: any[]): string {
 }
 
 export function formatDate(dateStr: string): string {
+  if (!dateStr) return '';
   const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -12,7 +14,9 @@ export function formatDate(dateStr: string): string {
 }
 
 export function formatDateShort(dateStr: string): string {
+  if (!dateStr) return '';
   const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',

@@ -37,18 +37,13 @@ export default function LiveStreamSection() {
                   streaming room for live chat &amp; prayer requests.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-4">
-                  <Link href="/watch/live">
-                    <Button variant="gold" size="lg">
-                      OPEN LIVE STREAM ROOM
-                    </Button>
-                  </Link>
                   <a
                     href={liveVideo?.url || 'https://www.youtube.com/@Bethesda_AG/live'}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button variant="outline" size="lg">
-                      WATCH ON YOUTUBE →
+                    <Button variant="gold" size="lg">
+                      WATCH LIVE ON YOUTUBE →
                     </Button>
                   </a>
                 </div>
@@ -64,23 +59,23 @@ export default function LiveStreamSection() {
                 />
               </div>
             </div>
-          ) : (
             /* Scheduled Broadcast State */
             <div className="text-center max-w-2xl mx-auto space-y-6 py-6">
-              <span className="text-overline font-semibold text-gold uppercase tracking-[0.2em]">
-                NEXT BROADCAST
-              </span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-gold text-xs font-bold uppercase tracking-wider">
+                <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
+                NEXT BROADCAST • SUNDAY WORSHIP
+              </div>
               <h3 className="font-display font-bold text-3xl sm:text-4xl text-charcoal dark:text-ivory">
-                Sunday Morning Worship
+                Sunday Worship Celebration
               </h3>
               <p className="text-base sm:text-lg text-muted-text dark:text-ivory/80 leading-relaxed">
-                Join our live worship broadcast this <strong>Sunday at 9:00 AM IST</strong>.
-                Whenever a service goes live or a video is posted, it appears here automatically.
+                Join our live worship broadcast every <strong>Sunday</strong>.
+                All recent messages are automatically streamed and synced from YouTube.
               </p>
               <div className="pt-4 flex flex-wrap justify-center gap-4">
-                <Link href="/watch/live">
+                <Link href="/messages">
                   <Button variant="gold" size="lg">
-                    GO TO LIVE STREAM ROOM
+                    BROWSE ALL SERMONS & MESSAGES
                   </Button>
                 </Link>
                 <a

@@ -23,8 +23,11 @@ interface YouTubeVideo {
 }
 
 function formatDate(iso: string): string {
+  if (!iso) return '';
   try {
-    return new Date(iso).toLocaleDateString('en-IN', {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-IN', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',

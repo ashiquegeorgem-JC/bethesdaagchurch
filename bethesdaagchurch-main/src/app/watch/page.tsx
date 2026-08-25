@@ -18,8 +18,11 @@ interface YouTubeVideo {
 }
 
 function formatDate(iso: string): string {
+  if (!iso) return '';
   try {
-    return new Date(iso).toLocaleDateString('en-IN', {
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('en-IN', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -77,12 +80,16 @@ export default function WatchPage() {
               YouTube channel — <span className="text-gold font-semibold">@Bethesda_AG</span>.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href="/watch/live">
+              <a
+                href="https://www.youtube.com/@Bethesda_AG/live"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="gold" size="lg">
                   <span
                     className={`w-2.5 h-2.5 rounded-full mr-2 inline-block ${isLive ? 'bg-red-600 animate-ping' : 'bg-gold-light'}`}
                   />
-                  {isLive ? 'JOIN LIVE STREAM NOW' : 'GO TO LIVE STREAM ROOM'}
+                  {isLive ? 'JOIN LIVE STREAM ON YOUTUBE' : 'OPEN YOUTUBE LIVE STREAM'}
                 </Button>
               </a>
               <a

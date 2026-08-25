@@ -18,68 +18,13 @@ export interface LiveStreamStatus {
   liveVideo: YouTubeVideo | null;
 }
 
-// ── Server-side in-memory cache ──────────────────────────────────
+// In-memory cache for fast server responses
 let cachedVideos: YouTubeVideo[] = staticVideos as YouTubeVideo[];
 let cachedLiveStatus: LiveStreamStatus = { isLive: false, liveVideo: null };
-let lastVideoFetchTime = 0;
-let lastLiveCheckTime = 0;
+let lastFetchTime = 0;
 
-const VIDEO_CACHE_MS = 5 * 60 * 1000;  // Refresh video list every 5 minutes
-const LIVE_CACHE_MS  = 60 * 1000;       // Re-check live status every 60 seconds
+const CACHE_DURATION_MS = 2 * 60 * 1000; // Refresh every 2 minutes
 
-// ── RSS Feed: most reliable no-auth way to get latest uploads ───
-async function fetchVideosFromRSS(): Promise<YouTubeVideo[]> {
-  try {
-    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${YOUTUBE_CHANNEL_ID}`;
-    const res = await fetch(rssUrl, {
-      headers: { 'Accept': 'application/rss+xml, application/xml, text/xml' },
-      // No next.js cache — we control caching ourselves in-memory
-      cache: 'no-store',
-    });
-
-    if (!res.ok) {
-      console.warn('[YT] RSS feed responded with', res.status);
-      return [];
-    }
-
-    const xml = await res.text();
-
-    // Parse <entry> blocks from Atom XML
-    const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
-    const videos: YouTubeVideo[] = [];
-
-    for (const [, entry] of entries) {
-      const id = entry.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1];
-      const title = entry.match(/<title>([^<]+)<\/title>/)?.[1]
-        ?.replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'");
-      const published = entry.match(/<published>([^<]+)<\/published>/)?.[1];
-      const thumbUrl = entry.match(/url="([^"]+\.jpg[^"]*)"/)?.[1];
-
-      if (!id || !title) continue;
-
-      videos.push({
-        id,
-        title,
-        thumbnail: thumbUrl || `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-        publishedAt: published || new Date().toISOString(),
-        url: `https://www.youtube.com/watch?v=${id}`,
-        embedUrl: `https://www.youtube.com/embed/${id}`,
-      });
-    }
-
-    console.log(`[YT] RSS returned ${videos.length} videos`);
-    return videos;
-  } catch (err) {
-    console.warn('[YT] RSS fetch failed:', err);
-    return [];
-  }
-}
-
-// ── oEmbed helper (used for getting live video title) ────────────
 async function fetchVideoOEmbed(
   videoId: string
 ): Promise<{ title: string } | null> {
@@ -98,9 +43,113 @@ async function fetchVideoOEmbed(
   return null;
 }
 
-// ── Live status check ────────────────────────────────────────────
+/** Scrapes both /streams (past live services) and /videos (uploads) from YouTube channel */
+async function scrapeAllVideosFromYouTube(): Promise<YouTubeVideo[]> {
+  try {
+    const headers = {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'Accept-Language': 'en-US,en;q=0.9',
+    };
+
+    // Parallel fetch both /streams (for live services) and /videos (for uploads)
+    const [streamsRes, videosRes] = await Promise.all([
+      fetch(`https://www.youtube.com/${YOUTUBE_HANDLE}/streams`, { headers, cache: 'no-store' }),
+      fetch(`https://www.youtube.com/${YOUTUBE_HANDLE}/videos`, { headers, cache: 'no-store' }),
+    ]);
+
+    const seen = new Set<string>();
+    const videos: YouTubeVideo[] = [];
+
+    function extractFromHtml(html: string) {
+      const match =
+        html.match(/var ytInitialData = ({[\s\S]*?});<\/script>/) ||
+        html.match(/ytInitialData"\s*:\s*({[\s\S]*?})\s*;\s*</);
+
+      if (!match) return;
+
+      try {
+        const ytData = JSON.parse(match[1]);
+
+        function walk(obj: any) {
+          if (!obj || typeof obj !== 'object') return;
+          if (Array.isArray(obj)) {
+            for (const item of obj) walk(item);
+            return;
+          }
+
+          if (obj.lockupViewModel) {
+            const lv = obj.lockupViewModel;
+            let videoId: string | null = null;
+
+            const thumbUrl = lv.contentImage?.thumbnailViewModel?.image?.sources?.[0]?.url;
+            if (thumbUrl) {
+              const m = thumbUrl.match(/\/vi\/([a-zA-Z0-9_-]{11})\//);
+              if (m) videoId = m[1];
+            }
+
+            const title = lv.metadata?.lockupMetadataViewModel?.title?.content;
+
+            let publishedAt = '';
+            const metaRows =
+              lv.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel
+                ?.metadataRows;
+
+            if (metaRows) {
+              for (const row of metaRows) {
+                for (const part of row.metadataParts || []) {
+                  const text = part.text?.content || '';
+                  if (
+                    text.includes('ago') ||
+                    text.includes('year') ||
+                    text.includes('month') ||
+                    text.includes('week') ||
+                    text.includes('day') ||
+                    text.includes('Streamed')
+                  ) {
+                    publishedAt = text;
+                  }
+                }
+              }
+            }
+
+            if (videoId && title && !seen.has(videoId)) {
+              seen.add(videoId);
+              videos.push({
+                id: videoId,
+                title,
+                thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+                publishedAt: publishedAt || 'Recently streamed',
+                url: `https://www.youtube.com/watch?v=${videoId}`,
+                embedUrl: `https://www.youtube.com/embed/${videoId}`,
+              });
+            }
+          }
+
+          for (const k of Object.keys(obj)) {
+            if (k !== 'lockupViewModel') walk(obj[k]);
+          }
+        }
+
+        walk(ytData);
+      } catch (err) {
+        console.warn('[YT API] JSON parse error in html extract:', err);
+      }
+    }
+
+    if (streamsRes.ok) extractFromHtml(await streamsRes.text());
+    if (videosRes.ok) extractFromHtml(await videosRes.text());
+
+    if (videos.length === 0) return staticVideos as YouTubeVideo[];
+    return videos;
+  } catch (error) {
+    console.warn('[YT API] Scrape error, falling back to static videos:', error);
+    return staticVideos as YouTubeVideo[];
+  }
+}
+
 async function checkLiveStatus(): Promise<LiveStreamStatus> {
-  // Method 1: Official YouTube Data API v3 (if API key is set)
+  // Check YouTube API key if provided
   const apiKey = process.env.YOUTUBE_API_KEY || process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
   if (apiKey) {
     try {
@@ -117,11 +166,11 @@ async function checkLiveStatus(): Promise<LiveStreamStatus> {
             isLive: true,
             liveVideo: {
               id: videoId,
-              title: item.snippet.title || 'Bethesda AG Church – Live',
+              title: item.snippet.title || 'Bethesda AG Church Live Service',
               thumbnail:
                 item.snippet.thumbnails?.high?.url ||
                 `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-              publishedAt: item.snippet.publishedAt || new Date().toISOString(),
+              publishedAt: 'LIVE NOW',
               url: `https://www.youtube.com/watch?v=${videoId}`,
               embedUrl: `https://www.youtube.com/embed/${videoId}?autoplay=1`,
             },
@@ -129,11 +178,11 @@ async function checkLiveStatus(): Promise<LiveStreamStatus> {
         }
       }
     } catch (e) {
-      console.warn('[YT] API live check failed:', e);
+      console.warn('[YT API] Live API check failed:', e);
     }
   }
 
-  // Method 2: Redirect trick — YouTube /live redirects to the active watch URL when live
+  // Fallback: check YouTube live redirect URL
   try {
     const liveRes = await fetch(`https://www.youtube.com/${YOUTUBE_HANDLE}/live`, {
       headers: {
@@ -146,60 +195,49 @@ async function checkLiveStatus(): Promise<LiveStreamStatus> {
     });
 
     const isWatchUrl = liveRes.url.includes('/watch?v=');
-    const videoId = isWatchUrl
+    const watchVideoId = isWatchUrl
       ? liveRes.url.match(/\/watch\?v=([a-zA-Z0-9_-]{11})/)?.[1]
       : null;
 
-    if (isWatchUrl && videoId) {
-      const oembed = await fetchVideoOEmbed(videoId);
+    if (isWatchUrl && watchVideoId) {
+      const oembed = await fetchVideoOEmbed(watchVideoId);
       return {
         isLive: true,
         liveVideo: {
-          id: videoId,
-          title: oembed?.title || 'Bethesda AG Church – Live',
-          thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-          publishedAt: new Date().toISOString(),
-          url: `https://www.youtube.com/watch?v=${videoId}`,
-          embedUrl: `https://www.youtube.com/embed/${videoId}?autoplay=1`,
+          id: watchVideoId,
+          title: oembed?.title || 'Bethesda AG Church Live Service',
+          thumbnail: `https://i.ytimg.com/vi/${watchVideoId}/hqdefault.jpg`,
+          publishedAt: 'LIVE NOW',
+          url: `https://www.youtube.com/watch?v=${watchVideoId}`,
+          embedUrl: `https://www.youtube.com/embed/${watchVideoId}?autoplay=1`,
         },
       };
     }
   } catch (err) {
-    console.warn('[YT] Live redirect check error:', err);
+    console.warn('[YT API] Live stream check error:', err);
   }
 
   return { isLive: false, liveVideo: null };
 }
 
-// ── API Route ────────────────────────────────────────────────────
 export async function GET() {
   const now = Date.now();
 
-  // Refresh the video list every 5 minutes from RSS
-  if (now - lastVideoFetchTime > VIDEO_CACHE_MS) {
-    const rssVideos = await fetchVideosFromRSS();
-    if (rssVideos.length > 0) {
-      cachedVideos = rssVideos;
-    }
-    // Always update the timestamp so we don't hammer RSS on every failure
-    lastVideoFetchTime = now;
+  if (now - lastFetchTime > CACHE_DURATION_MS || cachedVideos.length === 0) {
+    const [fetchedVideos, liveStatus] = await Promise.all([
+      scrapeAllVideosFromYouTube(),
+      checkLiveStatus(),
+    ]);
+
+    cachedVideos = fetchedVideos;
+    cachedLiveStatus = liveStatus;
+    lastFetchTime = now;
   }
 
-  // Re-check live status every 60 seconds
-  if (now - lastLiveCheckTime > LIVE_CACHE_MS) {
-    try {
-      cachedLiveStatus = await checkLiveStatus();
-    } catch {
-      // Keep previous status on error
-    }
-    lastLiveCheckTime = now;
-  }
-
-  // If we're live, prepend the live video to the top of the list
+  // Prepend active live stream to the very top if live
   let videos = cachedVideos;
   if (cachedLiveStatus.isLive && cachedLiveStatus.liveVideo) {
     const lv = cachedLiveStatus.liveVideo;
-    // Only prepend if it's not already in the list
     if (!videos.find((v) => v.id === lv.id)) {
       videos = [lv, ...videos];
     }
@@ -211,8 +249,6 @@ export async function GET() {
     videos,
     channelUrl: `https://www.youtube.com/${YOUTUBE_HANDLE}`,
     channelHandle: YOUTUBE_HANDLE,
-    // Let clients know when this data was last refreshed
-    videosUpdatedAt: new Date(lastVideoFetchTime || now).toISOString(),
-    liveCheckedAt: new Date(lastLiveCheckTime || now).toISOString(),
+    updatedAt: new Date(lastFetchTime).toISOString(),
   });
 }
